@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Redirect from /test1 to /test2
+RewriteRule ^test1/?$ /test2 [R=301,L]
+
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# Error handling
+ErrorDocument 404 /404.html
